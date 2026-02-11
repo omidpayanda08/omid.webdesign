@@ -1,0 +1,1016 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developer Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&amp;family=Rajdhani:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --neon-cyan: #00f5ff;
+      --neon-magenta: #ff00ff;
+      --neon-purple: #8b5cf6;
+      --dark-bg: #0a0a0f;
+      --glass-bg: rgba(255, 255, 255, 0.05);
+    }
+    
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: var(--neon-cyan) transparent;
+    }
+    
+    .font-orbitron { font-family: 'Orbitron', sans-serif; }
+    .font-rajdhani { font-family: 'Rajdhani', sans-serif; }
+    
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .glass-strong {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    
+    .neon-text {
+      text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan);
+    }
+    
+    .neon-text-magenta {
+      text-shadow: 0 0 10px var(--neon-magenta), 0 0 20px var(--neon-magenta);
+    }
+    
+    .neon-border {
+      box-shadow: 0 0 15px rgba(0, 245, 255, 0.3), inset 0 0 15px rgba(0, 245, 255, 0.1);
+    }
+    
+    .neon-glow {
+      box-shadow: 0 0 30px rgba(0, 245, 255, 0.4), 0 0 60px rgba(0, 245, 255, 0.2);
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 1; filter: brightness(1); }
+      50% { opacity: 0.8; filter: brightness(1.2); }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    
+    @keyframes blink {
+      0%, 50% { border-color: var(--neon-cyan); }
+      51%, 100% { border-color: transparent; }
+    }
+    
+    @keyframes scan-line {
+      0% { top: 0%; }
+      100% { top: 100%; }
+    }
+    
+    @keyframes gradient-shift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+    .animate-float { animation: float 3s ease-in-out infinite; }
+    
+    .grid-background {
+      background-image: 
+        linear-gradient(rgba(0, 245, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 245, 255, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+    
+    .widget-card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .widget-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 0 40px rgba(0, 245, 255, 0.3);
+    }
+    
+    .skill-bar {
+      background: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta));
+      box-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+    }
+    
+    .code-line {
+      animation: typing 2s steps(40) forwards;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    
+    .cursor {
+      border-right: 2px solid var(--neon-cyan);
+      animation: blink 1s infinite;
+    }
+    
+    .hex-pattern {
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 15V45L30 60L0 45V15L30 0Z' fill='none' stroke='rgba(0,245,255,0.05)' stroke-width='1'/%3E%3C/svg%3E");
+    }
+    
+    .project-card {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+      animation: scan-line 3s linear infinite;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #00f5ff, #ff00ff, #8b5cf6);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradient-shift 3s ease infinite;
+    }
+    
+    .btn-neon {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-neon::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .btn-neon:hover::before {
+      left: 100%;
+    }
+    
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--neon-cyan), var(--neon-magenta), transparent);
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-rajdhani text-white overflow-auto" style="background: linear-gradient(135deg, #0a0a0f 0%, #0f0a1a 50%, #0a0f0f 100%);">
+  <div class="min-h-full w-full grid-background hex-pattern"><!-- Navigation -->
+   <nav class="fixed top-0 left-0 right-0 z-50 glass">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+     <div class="font-orbitron text-xl font-bold neon-text">
+      AC
+     </div>
+     <div class="hidden md:flex gap-8 text-sm tracking-wider"><a href="#hero" class="hover:text-cyan-400 transition-colors">HOME</a> <a href="#showcase" class="hover:text-cyan-400 transition-colors">SHOWCASE</a> <a href="#about" class="hover:text-cyan-400 transition-colors">ABOUT</a> <a href="#value" class="hover:text-cyan-400 transition-colors">VALUE</a> <a href="#portfolio" class="hover:text-cyan-400 transition-colors">PORTFOLIO</a>
+     </div><button class="btn-neon px-4 py-2 glass rounded-lg text-cyan-400 border border-cyan-400/30 text-sm"> CONNECT </button>
+    </div>
+   </nav><!-- Hero Section -->
+   <section id="hero" class="min-h-screen flex items-center justify-center relative px-6 pt-20"><!-- Floating Elements -->
+    <div class="absolute top-20 left-10 w-20 h-20 rounded-full bg-cyan-500/10 blur-xl animate-float"></div>
+    <div class="absolute bottom-40 right-20 w-32 h-32 rounded-full bg-purple-500/10 blur-xl animate-float" style="animation-delay: 1s;"></div>
+    <div class="absolute top-1/3 right-1/4 w-16 h-16 rounded-full bg-pink-500/10 blur-xl animate-float" style="animation-delay: 2s;"></div>
+    <div class="max-w-6xl mx-auto text-center relative z-10"><!-- Bridge Visualization -->
+     <div class="mb-8 flex items-center justify-center gap-4 md:gap-8">
+      <div class="glass-strong rounded-2xl p-4 md:p-6 animate-float">
+       <svg class="w-12 h-12 md:w-16 md:h-16 text-cyan-400" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+       </svg>
+       <p class="mt-2 text-xs md:text-sm text-gray-400">BUSINESS</p>
+      </div><!-- Animated Bridge -->
+      <div class="relative w-24 md:w-40 h-2">
+       <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 rounded-full animate-pulse-glow"></div>
+       <div class="absolute -top-1 left-0 w-4 h-4 bg-cyan-400 rounded-full animate-pulse shadow-lg shadow-cyan-400/50"></div>
+       <div class="absolute -top-1 right-0 w-4 h-4 bg-pink-400 rounded-full animate-pulse shadow-lg shadow-pink-400/50" style="animation-delay: 0.5s;"></div>
+      </div>
+      <div class="glass-strong rounded-2xl p-4 md:p-6 animate-float" style="animation-delay: 0.5s;">
+       <svg class="w-12 h-12 md:w-16 md:h-16 text-pink-400" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+       </svg>
+       <p class="mt-2 text-xs md:text-sm text-gray-400">WEB</p>
+      </div>
+     </div>
+     <h1 id="hero-title" class="font-orbitron text-4xl md:text-6xl lg:text-7xl font-bold mb-4 gradient-text">Business to Web Bridge</h1>
+     <p id="hero-subtitle" class="text-xl md:text-2xl text-gray-300 mb-8 tracking-wide">Web Developer &amp; Digital Strategist</p>
+     <p class="text-gray-400 max-w-2xl mx-auto mb-10 text-lg leading-relaxed">Transforming your business vision into powerful digital experiences that captivate audiences and drive growth.</p>
+     <div class="flex flex-wrap justify-center gap-4"><button class="btn-neon px-8 py-3 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg font-semibold tracking-wider hover:shadow-lg hover:shadow-cyan-500/30 transition-all"> VIEW PROJECTS </button> <button class="btn-neon px-8 py-3 glass rounded-lg border border-cyan-400/30 text-cyan-400 font-semibold tracking-wider hover:bg-cyan-400/10 transition-all"> GET IN TOUCH </button>
+     </div><!-- Scroll Indicator -->
+     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+     </div>
+    </div>
+   </section>
+   <div class="section-divider max-w-4xl mx-auto"></div><!-- App Showcase Section -->
+   <section id="showcase" class="py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+     <div class="text-center mb-16">
+      <p class="text-cyan-400 font-orbitron text-sm tracking-widest mb-2">INTERACTIVE DEMOS</p>
+      <h2 class="font-orbitron text-3xl md:text-4xl font-bold gradient-text mb-4">App Showcase</h2>
+      <p class="text-gray-400 max-w-xl mx-auto">Experience functional mini-applications showcasing modern web capabilities</p>
+     </div>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Weather Widget -->
+      <div class="widget-card glass-strong rounded-2xl p-6 neon-border">
+       <div class="flex items-center justify-between mb-4"><span class="text-cyan-400 font-orbitron text-sm">WEATHER</span>
+        <div class="w-3 h-3 rounded-full bg-cyan-400 animate-pulse"></div>
+       </div>
+       <div class="flex items-center gap-4">
+        <div class="text-6xl">
+         ☀️
+        </div>
+        <div>
+         <div class="text-4xl font-bold" id="weather-temp">
+          24°C
+         </div>
+         <div class="text-gray-400">
+          San Francisco
+         </div>
+        </div>
+       </div>
+       <div class="mt-4 grid grid-cols-3 gap-2 text-center text-sm">
+        <div class="glass rounded-lg p-2">
+         <div class="text-gray-400">
+          Humidity
+         </div>
+         <div class="text-cyan-400 font-semibold">
+          65%
+         </div>
+        </div>
+        <div class="glass rounded-lg p-2">
+         <div class="text-gray-400">
+          Wind
+         </div>
+         <div class="text-cyan-400 font-semibold">
+          12km/h
+         </div>
+        </div>
+        <div class="glass rounded-lg p-2">
+         <div class="text-gray-400">
+          UV
+         </div>
+         <div class="text-cyan-400 font-semibold">
+          Medium
+         </div>
+        </div>
+       </div>
+       <div class="mt-4 flex justify-between text-xs text-gray-400"><span>🌤️ Mon</span> <span>⛅ Tue</span> <span>☁️ Wed</span> <span>🌧️ Thu</span> <span>☀️ Fri</span>
+       </div>
+      </div><!-- Calculator Widget -->
+      <div class="widget-card glass-strong rounded-2xl p-6 neon-border">
+       <div class="flex items-center justify-between mb-4"><span class="text-pink-400 font-orbitron text-sm">CALCULATOR</span>
+        <div class="w-3 h-3 rounded-full bg-pink-400 animate-pulse"></div>
+       </div>
+       <div class="glass rounded-lg p-3 mb-4 text-right">
+        <div class="text-gray-400 text-sm h-5" id="calc-history"></div>
+        <div class="text-2xl font-mono text-white" id="calc-display">
+         0
+        </div>
+       </div>
+       <div class="grid grid-cols-4 gap-2" id="calc-buttons"><button onclick="calcClear()" class="glass rounded-lg p-3 text-pink-400 hover:bg-pink-400/20 transition-colors">C</button> <button onclick="calcInput('±')" class="glass rounded-lg p-3 text-pink-400 hover:bg-pink-400/20 transition-colors">±</button> <button onclick="calcInput('%')" class="glass rounded-lg p-3 text-pink-400 hover:bg-pink-400/20 transition-colors">%</button> <button onclick="calcInput('÷')" class="glass rounded-lg p-3 text-cyan-400 hover:bg-cyan-400/20 transition-colors">÷</button> <button onclick="calcInput('7')" class="glass rounded-lg p-3 hover:bg-white/10 transition-colors">7</button> <button onclick="calcInput('8')" class="glass rounded-lg p-3 hover:bg-white/10 transition-colors">8</button> <button onclick="calcInput('9')" class="glass rounded-lg p-3 hover:bg-white/10 transition-colors">9</button> <button onclick="calcInput('×')" class="glass rounded-lg p-3 text-cyan-400 hover:bg-cyan-400/20 transition-colors">×</button> <button onclick="calcInput('4')" class="glass rounded-lg p-3 hover:bg-white/10 transition-colors">4</button> <button onclick="calcInput('5')" class="glass rounded-lg p-3 hover:bg-white/10 transition-colors">5</button> <button onclick="calcInput('6')" class="glass rounded-lg p-3 hover:bg-white/10 transition-colors">6</button> <button onclick="calcInput('-')" class="glass rounded-lg p-3 text-cyan-400 hover:bg-cyan-400/20 transition-colors">−</button> <button onclick="calcInput('1')" class="glass rounded-lg p-3 hover:bg-white/10 transition-colors">1</button> <button onclick="calcInput('2')" class="glass rounded-lg p-3 hover:bg-white/10 transition-colors">2</button> <button onclick="calcInput('3')" class="glass rounded-lg p-3 hover:bg-white/10 transition-colors">3</button> <button onclick="calcInput('+')" class="glass rounded-lg p-3 text-cyan-400 hover:bg-cyan-400/20 transition-colors">+</button> <button onclick="calcInput('0')" class="glass rounded-lg p-3 col-span-2 hover:bg-white/10 transition-colors">0</button> <button onclick="calcInput('.')" class="glass rounded-lg p-3 hover:bg-white/10 transition-colors">.</button> <button onclick="calcEquals()" class="glass rounded-lg p-3 bg-gradient-to-r from-cyan-500 to-pink-500 hover:opacity-80 transition-opacity">=</button>
+       </div>
+      </div><!-- Mini Game Widget -->
+      <div class="widget-card glass-strong rounded-2xl p-6 neon-border">
+       <div class="flex items-center justify-between mb-4"><span class="text-purple-400 font-orbitron text-sm">MEMORY GAME</span>
+        <div class="w-3 h-3 rounded-full bg-purple-400 animate-pulse"></div>
+       </div>
+       <div class="text-center mb-4"><span class="text-gray-400">Score: </span> <span class="text-purple-400 font-bold" id="game-score">0</span> <span class="text-gray-400 ml-4">Moves: </span> <span class="text-purple-400 font-bold" id="game-moves">0</span>
+       </div>
+       <div class="grid grid-cols-4 gap-2" id="game-board"><!-- Game cards will be generated by JS -->
+       </div><button onclick="initGame()" class="w-full mt-4 glass rounded-lg p-2 text-purple-400 hover:bg-purple-400/20 transition-colors font-semibold"> NEW GAME </button>
+      </div><!-- Hotel Feedback Widget -->
+      <div class="widget-card glass-strong rounded-2xl p-6 neon-border">
+       <div class="flex items-center justify-between mb-4"><span class="text-yellow-400 font-orbitron text-sm">HOTEL FEEDBACK</span>
+        <div class="w-3 h-3 rounded-full bg-yellow-400 animate-pulse"></div>
+       </div>
+       <form id="feedback-form" onsubmit="submitFeedback(event)">
+        <div class="mb-3"><label class="text-gray-400 text-sm">Overall Rating</label>
+         <div class="flex gap-1 mt-1" id="star-rating"><button type="button" onclick="setRating(1)" class="text-2xl transition-transform hover:scale-110">⭐</button> <button type="button" onclick="setRating(2)" class="text-2xl opacity-30 transition-transform hover:scale-110">⭐</button> <button type="button" onclick="setRating(3)" class="text-2xl opacity-30 transition-transform hover:scale-110">⭐</button> <button type="button" onclick="setRating(4)" class="text-2xl opacity-30 transition-transform hover:scale-110">⭐</button> <button type="button" onclick="setRating(5)" class="text-2xl opacity-30 transition-transform hover:scale-110">⭐</button>
+         </div>
+        </div>
+        <div class="mb-3"><label for="feedback-name" class="text-gray-400 text-sm">Name</label> <input type="text" id="feedback-name" class="w-full glass rounded-lg p-2 mt-1 bg-transparent border-none outline-none text-white placeholder-gray-500" placeholder="Your name">
+        </div>
+        <div class="mb-3"><label for="feedback-comment" class="text-gray-400 text-sm">Comment</label> <textarea id="feedback-comment" rows="2" class="w-full glass rounded-lg p-2 mt-1 bg-transparent border-none outline-none text-white placeholder-gray-500 resize-none" placeholder="Share your experience..."></textarea>
+        </div><button type="submit" class="w-full glass rounded-lg p-2 text-yellow-400 hover:bg-yellow-400/20 transition-colors font-semibold"> SUBMIT FEEDBACK </button>
+       </form>
+       <div id="feedback-success" class="hidden text-center py-4 text-green-400">
+        ✓ Thank you for your feedback!
+       </div>
+      </div><!-- Coffee Menu Widget -->
+      <div class="widget-card glass-strong rounded-2xl p-6 neon-border md:col-span-2 lg:col-span-2">
+       <div class="flex items-center justify-between mb-4"><span class="text-orange-400 font-orbitron text-sm">COFFEE MENU</span>
+        <div class="w-3 h-3 rounded-full bg-orange-400 animate-pulse"></div>
+       </div>
+       <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div class="glass rounded-xl p-4 text-center hover:bg-orange-400/10 transition-colors cursor-pointer group">
+         <div class="text-4xl mb-2 group-hover:scale-110 transition-transform">
+          ☕
+         </div>
+         <div class="font-semibold">
+          Espresso
+         </div>
+         <div class="text-orange-400 font-bold">
+          $3.50
+         </div>
+        </div>
+        <div class="glass rounded-xl p-4 text-center hover:bg-orange-400/10 transition-colors cursor-pointer group">
+         <div class="text-4xl mb-2 group-hover:scale-110 transition-transform">
+          🥛
+         </div>
+         <div class="font-semibold">
+          Latte
+         </div>
+         <div class="text-orange-400 font-bold">
+          $4.50
+         </div>
+        </div>
+        <div class="glass rounded-xl p-4 text-center hover:bg-orange-400/10 transition-colors cursor-pointer group">
+         <div class="text-4xl mb-2 group-hover:scale-110 transition-transform">
+          🧊
+         </div>
+         <div class="font-semibold">
+          Iced Coffee
+         </div>
+         <div class="text-orange-400 font-bold">
+          $4.00
+         </div>
+        </div>
+        <div class="glass rounded-xl p-4 text-center hover:bg-orange-400/10 transition-colors cursor-pointer group">
+         <div class="text-4xl mb-2 group-hover:scale-110 transition-transform">
+          🍵
+         </div>
+         <div class="font-semibold">
+          Matcha
+         </div>
+         <div class="text-orange-400 font-bold">
+          $5.00
+         </div>
+        </div>
+       </div>
+       <div class="mt-4 glass rounded-lg p-3 flex justify-between items-center">
+        <div><span class="text-gray-400">Cart: </span> <span id="cart-items" class="text-white">0 items</span>
+        </div>
+        <div class="text-orange-400 font-bold" id="cart-total">
+         $0.00
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <div class="section-divider max-w-4xl mx-auto"></div><!-- About Me & Skills Section -->
+   <section id="about" class="py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+     <div class="grid lg:grid-cols-2 gap-12 items-center"><!-- Code Animation -->
+      <div class="glass-strong rounded-2xl p-6 neon-border relative overflow-hidden">
+       <div class="flex items-center gap-2 mb-4">
+        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+        <div class="w-3 h-3 rounded-full bg-green-500"></div><span class="ml-4 text-gray-400 text-sm font-mono">developer.js</span>
+       </div>
+       <div class="font-mono text-sm space-y-1" id="code-animation">
+        <div class="text-purple-400">
+         const <span class="text-cyan-400">developer</span> = {
+        </div>
+        <div class="pl-4">
+         <span class="text-pink-400">name</span>: <span class="text-yellow-300" id="about-name-code">"Alex Chen"</span>,
+        </div>
+        <div class="pl-4">
+         <span class="text-pink-400">role</span>: <span class="text-yellow-300">"Full Stack Developer"</span>,
+        </div>
+        <div class="pl-4">
+         <span class="text-pink-400">passion</span>: <span class="text-yellow-300">"Building Digital Bridges"</span>,
+        </div>
+        <div class="pl-4">
+         <span class="text-pink-400">skills</span>: [
+        </div>
+        <div class="pl-8 text-green-400">
+         "JavaScript", "React", "Node.js",
+        </div>
+        <div class="pl-8 text-green-400">
+         "Python", "UI/UX", "Strategy"
+        </div>
+        <div class="pl-4">
+         ],
+        </div>
+        <div class="pl-4">
+         <span class="text-pink-400">buildAmazing</span>: () =&gt; <span class="text-cyan-400">true</span>
+        </div>
+        <div class="text-purple-400">
+         };
+        </div>
+        <div class="mt-2 text-gray-400">
+         // <span id="about-bio-code">Transforming business visions into digital reality</span>
+        </div>
+       </div><!-- Scan line effect -->
+       <div class="absolute left-0 right-0 h-px bg-cyan-400/30" style="animation: scan-line 4s linear infinite;"></div>
+      </div><!-- About Content -->
+      <div>
+       <p class="text-cyan-400 font-orbitron text-sm tracking-widest mb-2">WHO I AM</p>
+       <h2 class="font-orbitron text-3xl md:text-4xl font-bold mb-6"><span class="gradient-text" id="about-name-display">Alex Chen</span></h2>
+       <p class="text-gray-300 text-lg mb-6 leading-relaxed" id="about-bio-display">Transforming business visions into digital reality. With years of experience in web development and digital strategy, I help businesses establish powerful online presences that drive real results.</p><!-- Skills -->
+       <div class="space-y-4">
+        <div>
+         <div class="flex justify-between mb-1"><span class="text-gray-300">JavaScript / React</span> <span class="text-cyan-400">95%</span>
+         </div>
+         <div class="h-2 glass rounded-full overflow-hidden">
+          <div class="skill-bar h-full rounded-full" style="width: 95%;"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between mb-1"><span class="text-gray-300">UI/UX Design</span> <span class="text-cyan-400">90%</span>
+         </div>
+         <div class="h-2 glass rounded-full overflow-hidden">
+          <div class="skill-bar h-full rounded-full" style="width: 90%;"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between mb-1"><span class="text-gray-300">Node.js / Python</span> <span class="text-cyan-400">88%</span>
+         </div>
+         <div class="h-2 glass rounded-full overflow-hidden">
+          <div class="skill-bar h-full rounded-full" style="width: 88%;"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between mb-1"><span class="text-gray-300">Digital Strategy</span> <span class="text-cyan-400">92%</span>
+         </div>
+         <div class="h-2 glass rounded-full overflow-hidden">
+          <div class="skill-bar h-full rounded-full" style="width: 92%;"></div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <div class="section-divider max-w-4xl mx-auto"></div><!-- Value of Web Presence Section -->
+   <section id="value" class="py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+     <div class="text-center mb-16">
+      <p class="text-cyan-400 font-orbitron text-sm tracking-widest mb-2">WHY IT MATTERS</p>
+      <h2 class="font-orbitron text-3xl md:text-4xl font-bold gradient-text mb-4">The Value of Web Presence</h2>
+      <p class="text-gray-400 max-w-2xl mx-auto">In today's digital-first world, your online presence is your business's most powerful asset</p>
+     </div>
+     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="glass-strong rounded-2xl p-6 text-center group hover:neon-glow transition-all duration-500">
+       <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">
+        🌍
+       </div>
+       <h3 class="font-orbitron text-xl mb-2 text-cyan-400">Global Reach</h3>
+       <p class="text-gray-400 text-sm">Connect with customers worldwide, 24/7. Your website never sleeps.</p>
+       <div class="mt-4 text-2xl font-bold gradient-text">
+        4.9B+
+       </div>
+       <p class="text-gray-500 text-xs">Internet Users</p>
+      </div>
+      <div class="glass-strong rounded-2xl p-6 text-center group hover:neon-glow transition-all duration-500">
+       <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">
+        💎
+       </div>
+       <h3 class="font-orbitron text-xl mb-2 text-pink-400">Credibility</h3>
+       <p class="text-gray-400 text-sm">75% of consumers judge business credibility by website design.</p>
+       <div class="mt-4 text-2xl font-bold gradient-text">
+        75%
+       </div>
+       <p class="text-gray-500 text-xs">Trust Factor</p>
+      </div>
+      <div class="glass-strong rounded-2xl p-6 text-center group hover:neon-glow transition-all duration-500">
+       <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">
+        📈
+       </div>
+       <h3 class="font-orbitron text-xl mb-2 text-purple-400">Growth Engine</h3>
+       <p class="text-gray-400 text-sm">Businesses with websites grow 40% faster than those without.</p>
+       <div class="mt-4 text-2xl font-bold gradient-text">
+        40%
+       </div>
+       <p class="text-gray-500 text-xs">Faster Growth</p>
+      </div>
+      <div class="glass-strong rounded-2xl p-6 text-center group hover:neon-glow transition-all duration-500">
+       <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">
+        🎯
+       </div>
+       <h3 class="font-orbitron text-xl mb-2 text-yellow-400">Conversion</h3>
+       <p class="text-gray-400 text-sm">Professional websites convert 200% more visitors into customers.</p>
+       <div class="mt-4 text-2xl font-bold gradient-text">
+        200%
+       </div>
+       <p class="text-gray-500 text-xs">Higher Conversion</p>
+      </div>
+     </div><!-- Value Proposition -->
+     <div class="mt-12 glass-strong rounded-2xl p-8 neon-border">
+      <div class="grid md:grid-cols-3 gap-8">
+       <div class="text-center md:text-left">
+        <h3 class="font-orbitron text-xl text-cyan-400 mb-3">First Impressions</h3>
+        <p class="text-gray-400">Users form an opinion about your website in 0.05 seconds. Make every millisecond count with professional design.</p>
+       </div>
+       <div class="text-center md:text-left">
+        <h3 class="font-orbitron text-xl text-pink-400 mb-3">Always Available</h3>
+        <p class="text-gray-400">Your website works around the clock, generating leads and sales even while you sleep.</p>
+       </div>
+       <div class="text-center md:text-left">
+        <h3 class="font-orbitron text-xl text-purple-400 mb-3">Competitive Edge</h3>
+        <p class="text-gray-400">Stand out from competitors with a unique digital presence that showcases your brand's personality.</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <div class="section-divider max-w-4xl mx-auto"></div><!-- Portfolio Section -->
+   <section id="portfolio" class="py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+     <div class="text-center mb-16">
+      <p class="text-cyan-400 font-orbitron text-sm tracking-widest mb-2">MY WORK</p>
+      <h2 class="font-orbitron text-3xl md:text-4xl font-bold gradient-text mb-4">Portfolio Projects</h2>
+      <p class="text-gray-400 max-w-xl mx-auto">Explore interactive previews of recent coding projects with live JavaScript animations</p>
+     </div>
+     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Project 1 - Particle System -->
+      <div class="project-card glass-strong rounded-2xl overflow-hidden group">
+       <div class="h-48 relative bg-gradient-to-br from-cyan-900/50 to-purple-900/50 overflow-hidden">
+        <canvas id="particle-canvas" class="absolute inset-0 w-full h-full"></canvas>
+        <div class="absolute inset-0 flex items-center justify-center"><span class="text-6xl opacity-20 group-hover:opacity-40 transition-opacity">✨</span>
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-orbitron text-lg text-cyan-400 mb-2">Particle Physics Engine</h3>
+        <p class="text-gray-400 text-sm mb-4">Interactive particle system with physics-based animations and collision detection.</p>
+        <div class="flex gap-2 flex-wrap"><span class="px-2 py-1 glass rounded text-xs text-cyan-400">Canvas API</span> <span class="px-2 py-1 glass rounded text-xs text-pink-400">Physics</span> <span class="px-2 py-1 glass rounded text-xs text-purple-400">Animation</span>
+        </div>
+       </div>
+      </div><!-- Project 2 - Data Visualization -->
+      <div class="project-card glass-strong rounded-2xl overflow-hidden group">
+       <div class="h-48 relative bg-gradient-to-br from-pink-900/50 to-orange-900/50 p-4">
+        <div class="h-full flex items-end gap-2" id="bar-chart">
+         <div class="flex-1 bg-gradient-to-t from-pink-500 to-orange-500 rounded-t transition-all duration-500" style="height: 60%;"></div>
+         <div class="flex-1 bg-gradient-to-t from-pink-500 to-orange-500 rounded-t transition-all duration-500" style="height: 80%;"></div>
+         <div class="flex-1 bg-gradient-to-t from-pink-500 to-orange-500 rounded-t transition-all duration-500" style="height: 45%;"></div>
+         <div class="flex-1 bg-gradient-to-t from-pink-500 to-orange-500 rounded-t transition-all duration-500" style="height: 90%;"></div>
+         <div class="flex-1 bg-gradient-to-t from-pink-500 to-orange-500 rounded-t transition-all duration-500" style="height: 70%;"></div>
+         <div class="flex-1 bg-gradient-to-t from-pink-500 to-orange-500 rounded-t transition-all duration-500" style="height: 55%;"></div>
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-orbitron text-lg text-pink-400 mb-2">Data Visualization Suite</h3>
+        <p class="text-gray-400 text-sm mb-4">Dynamic charts and graphs with real-time data updates and smooth animations.</p>
+        <div class="flex gap-2 flex-wrap"><span class="px-2 py-1 glass rounded text-xs text-cyan-400">D3.js</span> <span class="px-2 py-1 glass rounded text-xs text-pink-400">Charts</span> <span class="px-2 py-1 glass rounded text-xs text-purple-400">Real-time</span>
+        </div>
+       </div>
+      </div><!-- Project 3 - 3D Animation -->
+      <div class="project-card glass-strong rounded-2xl overflow-hidden group">
+       <div class="h-48 relative bg-gradient-to-br from-purple-900/50 to-blue-900/50 flex items-center justify-center overflow-hidden">
+        <div id="cube-3d" class="w-20 h-20 relative preserve-3d" style="transform-style: preserve-3d;">
+         <div class="absolute inset-0 border-2 border-purple-400 bg-purple-400/10" style="transform: translateZ(40px);"></div>
+         <div class="absolute inset-0 border-2 border-purple-400 bg-purple-400/10" style="transform: translateZ(-40px);"></div>
+         <div class="absolute inset-0 border-2 border-cyan-400 bg-cyan-400/10" style="transform: rotateY(90deg) translateZ(40px);"></div>
+         <div class="absolute inset-0 border-2 border-cyan-400 bg-cyan-400/10" style="transform: rotateY(-90deg) translateZ(40px);"></div>
+         <div class="absolute inset-0 border-2 border-pink-400 bg-pink-400/10" style="transform: rotateX(90deg) translateZ(40px);"></div>
+         <div class="absolute inset-0 border-2 border-pink-400 bg-pink-400/10" style="transform: rotateX(-90deg) translateZ(40px);"></div>
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-orbitron text-lg text-purple-400 mb-2">3D Interactive Gallery</h3>
+        <p class="text-gray-400 text-sm mb-4">Immersive 3D experiences with CSS transforms and WebGL integration.</p>
+        <div class="flex gap-2 flex-wrap"><span class="px-2 py-1 glass rounded text-xs text-cyan-400">Three.js</span> <span class="px-2 py-1 glass rounded text-xs text-pink-400">WebGL</span> <span class="px-2 py-1 glass rounded text-xs text-purple-400">3D CSS</span>
+        </div>
+       </div>
+      </div><!-- Project 4 - E-Commerce -->
+      <div class="project-card glass-strong rounded-2xl overflow-hidden group">
+       <div class="h-48 relative bg-gradient-to-br from-green-900/50 to-teal-900/50 flex items-center justify-center">
+        <div class="text-center">
+         <div class="text-6xl mb-2 group-hover:animate-bounce">
+          🛒
+         </div>
+         <div class="flex gap-1 justify-center"><span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span> <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse" style="animation-delay: 0.2s;"></span> <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse" style="animation-delay: 0.4s;"></span>
+         </div>
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-orbitron text-lg text-green-400 mb-2">E-Commerce Platform</h3>
+        <p class="text-gray-400 text-sm mb-4">Full-stack shopping experience with cart management and payment integration.</p>
+        <div class="flex gap-2 flex-wrap"><span class="px-2 py-1 glass rounded text-xs text-cyan-400">React</span> <span class="px-2 py-1 glass rounded text-xs text-pink-400">Node.js</span> <span class="px-2 py-1 glass rounded text-xs text-purple-400">Stripe</span>
+        </div>
+       </div>
+      </div><!-- Project 5 - AI Dashboard -->
+      <div class="project-card glass-strong rounded-2xl overflow-hidden group">
+       <div class="h-48 relative bg-gradient-to-br from-yellow-900/50 to-red-900/50 p-4">
+        <div class="space-y-2">
+         <div class="glass rounded p-2 flex items-center gap-2">
+          <div class="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
+          <div class="flex-1 h-2 bg-gradient-to-r from-yellow-400 to-transparent rounded" id="ai-bar-1"></div>
+         </div>
+         <div class="glass rounded p-2 flex items-center gap-2">
+          <div class="w-2 h-2 bg-orange-400 rounded-full animate-pulse" style="animation-delay: 0.3s;"></div>
+          <div class="flex-1 h-2 bg-gradient-to-r from-orange-400 to-transparent rounded" id="ai-bar-2"></div>
+         </div>
+         <div class="glass rounded p-2 flex items-center gap-2">
+          <div class="w-2 h-2 bg-red-400 rounded-full animate-pulse" style="animation-delay: 0.6s;"></div>
+          <div class="flex-1 h-2 bg-gradient-to-r from-red-400 to-transparent rounded" id="ai-bar-3"></div>
+         </div>
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-orbitron text-lg text-yellow-400 mb-2">AI Analytics Dashboard</h3>
+        <p class="text-gray-400 text-sm mb-4">Machine learning insights visualization with predictive analytics.</p>
+        <div class="flex gap-2 flex-wrap"><span class="px-2 py-1 glass rounded text-xs text-cyan-400">Python</span> <span class="px-2 py-1 glass rounded text-xs text-pink-400">TensorFlow</span> <span class="px-2 py-1 glass rounded text-xs text-purple-400">Dashboard</span>
+        </div>
+       </div>
+      </div><!-- Project 6 - Real-time Chat -->
+      <div class="project-card glass-strong rounded-2xl overflow-hidden group">
+       <div class="h-48 relative bg-gradient-to-br from-blue-900/50 to-indigo-900/50 p-4">
+        <div class="space-y-2" id="chat-demo">
+         <div class="glass rounded-lg p-2 max-w-[70%] text-sm"><span class="text-cyan-400">User:</span> Hello! 👋
+         </div>
+         <div class="glass rounded-lg p-2 max-w-[70%] ml-auto text-sm text-right"><span class="text-pink-400">Bot:</span> Hi there! 🤖
+         </div>
+         <div class="glass rounded-lg p-2 max-w-[70%] text-sm opacity-50"><span class="text-gray-400">typing...</span>
+         </div>
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-orbitron text-lg text-blue-400 mb-2">Real-time Chat System</h3>
+        <p class="text-gray-400 text-sm mb-4">WebSocket-powered messaging with typing indicators and notifications.</p>
+        <div class="flex gap-2 flex-wrap"><span class="px-2 py-1 glass rounded text-xs text-cyan-400">Socket.io</span> <span class="px-2 py-1 glass rounded text-xs text-pink-400">Express</span> <span class="px-2 py-1 glass rounded text-xs text-purple-400">MongoDB</span>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="py-12 px-6 glass mt-12">
+    <div class="max-w-7xl mx-auto">
+     <div class="grid md:grid-cols-3 gap-8 items-center">
+      <div>
+       <div class="font-orbitron text-2xl font-bold neon-text mb-2">
+        AC
+       </div>
+       <p class="text-gray-400 text-sm">Bridging the gap between business vision and digital excellence.</p>
+      </div>
+      <div class="flex justify-center gap-4"><a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-cyan-400/20 transition-colors"> <span class="text-xl">💼</span> </a> <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-cyan-400/20 transition-colors"> <span class="text-xl">🐱</span> </a> <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-cyan-400/20 transition-colors"> <span class="text-xl">📧</span> </a> <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-cyan-400/20 transition-colors"> <span class="text-xl">🐦</span> </a>
+      </div>
+      <div class="text-right">
+       <p class="text-gray-400 text-sm">© 2024 Alex Chen. All rights reserved.</p>
+       <p class="text-cyan-400 text-xs mt-1">Built with ❤️ and lots of ☕</p>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      hero_title: "Business to Web Bridge",
+      hero_subtitle: "Web Developer & Digital Strategist",
+      about_name: "Alex Chen",
+      about_bio: "Transforming business visions into digital reality"
+    };
+    
+    // Initialize Element SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => {
+          // Update hero section
+          const heroTitle = document.getElementById('hero-title');
+          const heroSubtitle = document.getElementById('hero-subtitle');
+          const aboutNameDisplay = document.getElementById('about-name-display');
+          const aboutBioDisplay = document.getElementById('about-bio-display');
+          const aboutNameCode = document.getElementById('about-name-code');
+          const aboutBioCode = document.getElementById('about-bio-code');
+          
+          if (heroTitle) heroTitle.textContent = config.hero_title || defaultConfig.hero_title;
+          if (heroSubtitle) heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+          if (aboutNameDisplay) aboutNameDisplay.textContent = config.about_name || defaultConfig.about_name;
+          if (aboutBioDisplay) aboutBioDisplay.textContent = config.about_bio || defaultConfig.about_bio;
+          if (aboutNameCode) aboutNameCode.textContent = `"${config.about_name || defaultConfig.about_name}"`;
+          if (aboutBioCode) aboutBioCode.textContent = config.about_bio || defaultConfig.about_bio;
+        },
+        mapToCapabilities: (config) => ({
+          recolorables: [],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ["hero_title", config.hero_title || defaultConfig.hero_title],
+          ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
+          ["about_name", config.about_name || defaultConfig.about_name],
+          ["about_bio", config.about_bio || defaultConfig.about_bio]
+        ])
+      });
+    }
+    
+    // Calculator functionality
+    let calcValue = '0';
+    let calcOperator = null;
+    let calcPrevValue = null;
+    let calcNewNumber = true;
+    
+    function updateCalcDisplay() {
+      document.getElementById('calc-display').textContent = calcValue;
+    }
+    
+    function calcInput(val) {
+      if ('0123456789'.includes(val)) {
+        if (calcNewNumber) {
+          calcValue = val;
+          calcNewNumber = false;
+        } else {
+          calcValue = calcValue === '0' ? val : calcValue + val;
+        }
+      } else if (val === '.') {
+        if (!calcValue.includes('.')) {
+          calcValue += '.';
+          calcNewNumber = false;
+        }
+      } else if ('+-×÷'.includes(val)) {
+        if (calcOperator && !calcNewNumber) {
+          calcEquals();
+        }
+        calcPrevValue = calcValue;
+        calcOperator = val;
+        calcNewNumber = true;
+        document.getElementById('calc-history').textContent = `${calcPrevValue} ${calcOperator}`;
+      } else if (val === '±') {
+        calcValue = String(-parseFloat(calcValue));
+      } else if (val === '%') {
+        calcValue = String(parseFloat(calcValue) / 100);
+      }
+      updateCalcDisplay();
+    }
+    
+    function calcEquals() {
+      if (calcOperator && calcPrevValue !== null) {
+        const prev = parseFloat(calcPrevValue);
+        const current = parseFloat(calcValue);
+        let result;
+        switch (calcOperator) {
+          case '+': result = prev + current; break;
+          case '-': result = prev - current; break;
+          case '×': result = prev * current; break;
+          case '÷': result = current !== 0 ? prev / current : 'Error'; break;
+        }
+        document.getElementById('calc-history').textContent = `${calcPrevValue} ${calcOperator} ${calcValue} =`;
+        calcValue = String(result);
+        calcOperator = null;
+        calcPrevValue = null;
+        calcNewNumber = true;
+        updateCalcDisplay();
+      }
+    }
+    
+    function calcClear() {
+      calcValue = '0';
+      calcOperator = null;
+      calcPrevValue = null;
+      calcNewNumber = true;
+      document.getElementById('calc-history').textContent = '';
+      updateCalcDisplay();
+    }
+    
+    // Memory Game
+    const gameEmojis = ['🎮', '🎲', '🎯', '🎪', '🎨', '🎭', '🎪', '🎯'];
+    let gameCards = [];
+    let flippedCards = [];
+    let matchedPairs = 0;
+    let gameMoves = 0;
+    let gameScore = 0;
+    let canFlip = true;
+    
+    function initGame() {
+      const allEmojis = [...gameEmojis, ...gameEmojis];
+      gameCards = allEmojis.sort(() => Math.random() - 0.5);
+      flippedCards = [];
+      matchedPairs = 0;
+      gameMoves = 0;
+      gameScore = 0;
+      canFlip = true;
+      
+      document.getElementById('game-score').textContent = gameScore;
+      document.getElementById('game-moves').textContent = gameMoves;
+      
+      const board = document.getElementById('game-board');
+      board.innerHTML = '';
+      
+      gameCards.forEach((emoji, index) => {
+        const card = document.createElement('button');
+        card.className = 'aspect-square glass rounded-lg text-xl flex items-center justify-center transition-all duration-300 hover:bg-purple-400/20';
+        card.dataset.index = index;
+        card.dataset.emoji = emoji;
+        card.textContent = '?';
+        card.onclick = () => flipCard(card);
+        board.appendChild(card);
+      });
+    }
+    
+    function flipCard(card) {
+      if (!canFlip || card.dataset.flipped === 'true' || flippedCards.length >= 2) return;
+      
+      card.textContent = card.dataset.emoji;
+      card.dataset.flipped = 'true';
+      card.classList.add('bg-purple-400/30');
+      flippedCards.push(card);
+      
+      if (flippedCards.length === 2) {
+        gameMoves++;
+        document.getElementById('game-moves').textContent = gameMoves;
+        canFlip = false;
+        
+        if (flippedCards[0].dataset.emoji === flippedCards[1].dataset.emoji) {
+          matchedPairs++;
+          gameScore += 10;
+          document.getElementById('game-score').textContent = gameScore;
+          flippedCards = [];
+          canFlip = true;
+          
+          if (matchedPairs === gameEmojis.length) {
+            setTimeout(() => {
+              const bonus = Math.max(0, 100 - gameMoves * 2);
+              gameScore += bonus;
+              document.getElementById('game-score').textContent = gameScore;
+            }, 500);
+          }
+        } else {
+          setTimeout(() => {
+            flippedCards.forEach(c => {
+              c.textContent = '?';
+              c.dataset.flipped = 'false';
+              c.classList.remove('bg-purple-400/30');
+            });
+            flippedCards = [];
+            canFlip = true;
+          }, 1000);
+        }
+      }
+    }
+    
+    // Hotel Feedback
+    let feedbackRating = 1;
+    
+    function setRating(rating) {
+      feedbackRating = rating;
+      const stars = document.querySelectorAll('#star-rating button');
+      stars.forEach((star, index) => {
+        star.classList.toggle('opacity-30', index >= rating);
+      });
+    }
+    
+    function submitFeedback(event) {
+      event.preventDefault();
+      const form = document.getElementById('feedback-form');
+      const success = document.getElementById('feedback-success');
+      form.classList.add('hidden');
+      success.classList.remove('hidden');
+      
+      setTimeout(() => {
+        form.classList.remove('hidden');
+        success.classList.add('hidden');
+        form.reset();
+        setRating(1);
+      }, 3000);
+    }
+    
+    // Particle Animation
+    function initParticles() {
+      const canvas = document.getElementById('particle-canvas');
+      if (!canvas) return;
+      
+      const ctx = canvas.getContext('2d');
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      
+      const particles = [];
+      const particleCount = 30;
+      
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          vx: (Math.random() - 0.5) * 2,
+          vy: (Math.random() - 0.5) * 2,
+          radius: Math.random() * 3 + 1,
+          color: `hsl(${180 + Math.random() * 60}, 100%, 60%)`
+        });
+      }
+      
+      function animate() {
+        ctx.fillStyle = 'rgba(10, 10, 15, 0.1)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          
+          if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+          if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+          
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.fill();
+          
+          // Draw connections
+          particles.forEach(p2 => {
+            const dx = p.x - p2.x;
+            const dy = p.y - p2.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            
+            if (dist < 80) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = `rgba(0, 245, 255, ${0.3 - dist / 300})`;
+              ctx.stroke();
+            }
+          });
+        });
+        
+        requestAnimationFrame(animate);
+      }
+      
+      animate();
+    }
+    
+    // Bar Chart Animation
+    function animateBarChart() {
+      const bars = document.querySelectorAll('#bar-chart > div');
+      setInterval(() => {
+        bars.forEach(bar => {
+          const newHeight = 30 + Math.random() * 60;
+          bar.style.height = `${newHeight}%`;
+        });
+      }, 2000);
+    }
+    
+    // 3D Cube Animation
+    function animateCube() {
+      const cube = document.getElementById('cube-3d');
+      if (!cube) return;
+      
+      let rotX = 0;
+      let rotY = 0;
+      
+      function rotate() {
+        rotX += 0.5;
+        rotY += 0.8;
+        cube.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+        requestAnimationFrame(rotate);
+      }
+      
+      rotate();
+    }
+    
+    // AI Bars Animation
+    function animateAIBars() {
+      const bars = ['ai-bar-1', 'ai-bar-2', 'ai-bar-3'];
+      setInterval(() => {
+        bars.forEach(id => {
+          const bar = document.getElementById(id);
+          if (bar) {
+            const width = 20 + Math.random() * 80;
+            bar.style.width = `${width}%`;
+          }
+        });
+      }, 1500);
+    }
+    
+    // Initialize all animations
+    initGame();
+    initParticles();
+    animateBarChart();
+    animateCube();
+    animateAIBars();
+    
+    // Smooth scroll for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ca5191f66e9181e',t:'MTc3MDQ5MDQ5MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
