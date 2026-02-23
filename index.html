@@ -24,6 +24,14 @@
       scrollbar-width: thin;
       scrollbar-color: var(--neon-cyan) transparent;
     }
+    .chess-pattern {
+  background-color: #0f172a;
+  background-image: 
+    linear-gradient(45deg, #1e293b 25%, transparent 25%, transparent 75%, #1e293b 75%),
+    linear-gradient(45deg, #1e293b 25%, transparent 25%, transparent 75%, #1e293b 75%);
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+}
     
     .font-orbitron { font-family: 'Orbitron', sans-serif; }
     .font-rajdhani { font-family: 'Rajdhani', sans-serif; }
@@ -167,7 +175,11 @@
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
       transition: left 0.5s ease;
     }
-    
+
+
+    .image{
+      
+    }
     .btn-neon:hover::before {
       left: 100%;
     }
@@ -185,10 +197,19 @@
    <nav class="fixed top-0 left-0 right-0 z-50 glass">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
      <div class="font-orbitron text-xl font-bold neon-text">
-      AC
+      O-P
      </div>
-     <div class="hidden md:flex gap-8 text-sm tracking-wider"><a href="#hero" class="hover:text-cyan-400 transition-colors">HOME</a> <a href="#showcase" class="hover:text-cyan-400 transition-colors">SHOWCASE</a> <a href="#about" class="hover:text-cyan-400 transition-colors">ABOUT</a> <a href="#value" class="hover:text-cyan-400 transition-colors">VALUE</a> <a href="#portfolio" class="hover:text-cyan-400 transition-colors">PORTFOLIO</a>
-     </div><button class="btn-neon px-4 py-2 glass rounded-lg text-cyan-400 border border-cyan-400/30 text-sm"> CONNECT </button>
+     <div class="hidden md:flex gap-8 text-sm tracking-wider">
+        <a href="#hero" class="hover:text-cyan-400 transition-colors">HOME</a>
+         <a href="#showcase" class="hover:text-cyan-400 transition-colors">SHOWCASE</a>
+          <a href="#about" class="hover:text-cyan-400 transition-colors">ABOUT</a> 
+          <a href="#value" class="hover:text-cyan-400 transition-colors">VALUE</a>
+           <a href="#portfolio" class="hover:text-cyan-400 transition-colors">PORTFOLIO Projects</a>
+           
+     </div>
+     <a href="#contact" class="btn-neon px-4 py-2 glass rounded-lg text-cyan-400 border border-cyan-400/30 text-sm hover:bg-cyan-400/10 transition-all">
+    CONNECT
+  </a>
     </div>
    </nav><!-- Hero Section -->
    <section id="hero" class="min-h-screen flex items-center justify-center relative px-6 pt-20"><!-- Floating Elements -->
@@ -224,6 +245,129 @@
      </div>
     </div>
    </section>
+
+   <!-- added-->
+
+    <div class="section-divider max-w-4xl mx-auto"></div><!-- Portfolio Section -->
+   <section id="portfolio" class="py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+     <div class="text-center mb-16">
+      <p class="text-cyan-400 font-orbitron text-sm tracking-widest mb-2">MY WORK</p>
+      <h2 class="font-orbitron text-3xl md:text-4xl font-bold gradient-text mb-4">Portfolio Projects</h2>
+      <p class="text-gray-400 max-w-xl mx-auto">Explore interactive previews of recent coding projects with live JavaScript animations</p>
+     </div>
+     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Project 1 - Particle System -->
+      <div class="project-card glass-strong rounded-2xl overflow-hidden group">
+       <div class="h-48 relative bg-gradient-to-br from-cyan-900/50 to-purple-900/50 overflow-hidden">
+        <canvas id="particle-canvas" class="absolute inset-0 w-full h-full"></canvas>
+        <div class="absolute inset-0 flex items-center justify-center"><span class="text-6xl opacity-20 group-hover:opacity-40 transition-opacity">✨</span>
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-orbitron text-lg text-cyan-400 mb-2">Particle Physics Engine</h3>
+        <p class="text-gray-400 text-sm mb-4">Interactive particle system with physics-based animations and collision detection.</p>
+        <div class="flex gap-2 flex-wrap"><span class="px-2 py-1 glass rounded text-xs text-cyan-400">Canvas API</span> <span class="px-2 py-1 glass rounded text-xs text-pink-400">Physics</span> <span class="px-2 py-1 glass rounded text-xs text-purple-400">Animation</span>
+        </div>
+       </div>
+      </div><!-- Project 2 - Data Visualization -->
+      <div class="project-card glass-strong rounded-2xl overflow-hidden group">
+       <div class="h-48 relative bg-gradient-to-br from-pink-900/50 to-orange-900/50 p-4">
+        <div class="h-full flex items-end gap-2" id="bar-chart">
+         <div class="flex-1 bg-gradient-to-t from-pink-500 to-orange-500 rounded-t transition-all duration-500" style="height: 60%;"></div>
+         <div class="flex-1 bg-gradient-to-t from-pink-500 to-orange-500 rounded-t transition-all duration-500" style="height: 80%;"></div>
+         <div class="flex-1 bg-gradient-to-t from-pink-500 to-orange-500 rounded-t transition-all duration-500" style="height: 45%;"></div>
+         <div class="flex-1 bg-gradient-to-t from-pink-500 to-orange-500 rounded-t transition-all duration-500" style="height: 90%;"></div>
+         <div class="flex-1 bg-gradient-to-t from-pink-500 to-orange-500 rounded-t transition-all duration-500" style="height: 70%;"></div>
+         <div class="flex-1 bg-gradient-to-t from-pink-500 to-orange-500 rounded-t transition-all duration-500" style="height: 55%;"></div>
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-orbitron text-lg text-pink-400 mb-2">Data Visualization Suite</h3>
+        <p class="text-gray-400 text-sm mb-4">Dynamic charts and graphs with real-time data updates and smooth animations.</p>
+        <div class="flex gap-2 flex-wrap"><span class="px-2 py-1 glass rounded text-xs text-cyan-400">D3.js</span> <span class="px-2 py-1 glass rounded text-xs text-pink-400">Charts</span> <span class="px-2 py-1 glass rounded text-xs text-purple-400">Real-time</span>
+        </div>
+       </div>
+      </div><!-- Project 3 - 3D Animation -->
+      <div class="project-card glass-strong rounded-2xl overflow-hidden group">
+       <div class="h-48 relative bg-gradient-to-br from-purple-900/50 to-blue-900/50 flex items-center justify-center overflow-hidden">
+        <div id="cube-3d" class="w-20 h-20 relative preserve-3d" style="transform-style: preserve-3d;">
+         <div class="absolute inset-0 border-2 border-purple-400 bg-purple-400/10" style="transform: translateZ(40px);"></div>
+         <div class="absolute inset-0 border-2 border-purple-400 bg-purple-400/10" style="transform: translateZ(-40px);"></div>
+         <div class="absolute inset-0 border-2 border-cyan-400 bg-cyan-400/10" style="transform: rotateY(90deg) translateZ(40px);"></div>
+         <div class="absolute inset-0 border-2 border-cyan-400 bg-cyan-400/10" style="transform: rotateY(-90deg) translateZ(40px);"></div>
+         <div class="absolute inset-0 border-2 border-pink-400 bg-pink-400/10" style="transform: rotateX(90deg) translateZ(40px);"></div>
+         <div class="absolute inset-0 border-2 border-pink-400 bg-pink-400/10" style="transform: rotateX(-90deg) translateZ(40px);"></div>
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-orbitron text-lg text-purple-400 mb-2">3D Interactive Gallery</h3>
+        <p class="text-gray-400 text-sm mb-4">Immersive 3D experiences with CSS transforms and WebGL integration.</p>
+        <div class="flex gap-2 flex-wrap"><span class="px-2 py-1 glass rounded text-xs text-cyan-400">Three.js</span> <span class="px-2 py-1 glass rounded text-xs text-pink-400">WebGL</span> <span class="px-2 py-1 glass rounded text-xs text-purple-400">3D CSS</span>
+        </div>
+       </div>
+      </div><!-- Project 4 - E-Commerce -->
+      <div class="project-card glass-strong rounded-2xl overflow-hidden group">
+       <div class="h-48 relative bg-gradient-to-br from-green-900/50 to-teal-900/50 flex items-center justify-center">
+        <div class="text-center">
+         <div class="text-6xl mb-2 group-hover:animate-bounce">
+          🛒
+         </div>
+         <div class="flex gap-1 justify-center"><span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span> <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse" style="animation-delay: 0.2s;"></span> <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse" style="animation-delay: 0.4s;"></span>
+         </div>
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-orbitron text-lg text-green-400 mb-2">E-Commerce Platform</h3>
+        <p class="text-gray-400 text-sm mb-4">Full-stack shopping experience with cart management and payment integration.</p>
+        <div class="flex gap-2 flex-wrap"><span class="px-2 py-1 glass rounded text-xs text-cyan-400">React</span> <span class="px-2 py-1 glass rounded text-xs text-pink-400">Node.js</span> <span class="px-2 py-1 glass rounded text-xs text-purple-400">Stripe</span>
+        </div>
+       </div>
+      </div><!-- Project 5 - AI Dashboard -->
+      <div class="project-card glass-strong rounded-2xl overflow-hidden group">
+       <div class="h-48 relative bg-gradient-to-br from-yellow-900/50 to-red-900/50 p-4">
+        <div class="space-y-2">
+         <div class="glass rounded p-2 flex items-center gap-2">
+          <div class="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
+          <div class="flex-1 h-2 bg-gradient-to-r from-yellow-400 to-transparent rounded" id="ai-bar-1"></div>
+         </div>
+         <div class="glass rounded p-2 flex items-center gap-2">
+          <div class="w-2 h-2 bg-orange-400 rounded-full animate-pulse" style="animation-delay: 0.3s;"></div>
+          <div class="flex-1 h-2 bg-gradient-to-r from-orange-400 to-transparent rounded" id="ai-bar-2"></div>
+         </div>
+         <div class="glass rounded p-2 flex items-center gap-2">
+          <div class="w-2 h-2 bg-red-400 rounded-full animate-pulse" style="animation-delay: 0.6s;"></div>
+          <div class="flex-1 h-2 bg-gradient-to-r from-red-400 to-transparent rounded" id="ai-bar-3"></div>
+         </div>
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-orbitron text-lg text-yellow-400 mb-2">AI Analytics Dashboard</h3>
+        <p class="text-gray-400 text-sm mb-4">Machine learning insights visualization with predictive analytics.</p>
+        <div class="flex gap-2 flex-wrap"><span class="px-2 py-1 glass rounded text-xs text-cyan-400">Python</span> <span class="px-2 py-1 glass rounded text-xs text-pink-400">TensorFlow</span> <span class="px-2 py-1 glass rounded text-xs text-purple-400">Dashboard</span>
+        </div>
+       </div>
+      </div><!-- Project 6 - Real-time Chat -->
+      <div class="project-card glass-strong rounded-2xl overflow-hidden group">
+       <div class="h-48 relative bg-gradient-to-br from-blue-900/50 to-indigo-900/50 p-4">
+        <div class="space-y-2" id="chat-demo">
+         <div class="glass rounded-lg p-2 max-w-[70%] text-sm"><span class="text-cyan-400">User:</span> Hello! 👋
+         </div>
+         <div class="glass rounded-lg p-2 max-w-[70%] ml-auto text-sm text-right"><span class="text-pink-400">Bot:</span> Hi there! 🤖
+         </div>
+         <div class="glass rounded-lg p-2 max-w-[70%] text-sm opacity-50"><span class="text-gray-400">typing...</span>
+         </div>
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-orbitron text-lg text-blue-400 mb-2">Real-time Chat System</h3>
+        <p class="text-gray-400 text-sm mb-4">WebSocket-powered messaging with typing indicators and notifications.</p>
+        <div class="flex gap-2 flex-wrap"><span class="px-2 py-1 glass rounded text-xs text-cyan-400">Socket.io</span> <span class="px-2 py-1 glass rounded text-xs text-pink-400">Express</span> <span class="px-2 py-1 glass rounded text-xs text-purple-400">MongoDB</span>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+ 
    <div class="section-divider max-w-4xl mx-auto"></div><!-- App Showcase Section -->
    <section id="showcase" class="py-20 px-6">
     <div class="max-w-7xl mx-auto">
@@ -234,7 +378,7 @@
      </div>
      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Weather Widget -->
       <div class="widget-card glass-strong rounded-2xl p-6 neon-border">
-       <div class="flex items-center justify-between mb-4"><span class="text-cyan-400 font-orbitron text-sm">WEATHER</span>
+       <div class="flex items-center justify-between mb-4"><span class="text-cyan-400 font-orbitron text-sm">My simple WEATHER App</span>
         <div class="w-3 h-3 rounded-full bg-cyan-400 animate-pulse"></div>
        </div>
        <div class="flex items-center gap-4">
@@ -398,19 +542,19 @@
          <span class="text-pink-400">name</span>: <span class="text-yellow-300" id="about-name-code">"Omid Payanda"</span>,
         </div>
         <div class="pl-4">
-         <span class="text-pink-400">role</span>: <span class="text-yellow-300">"Frant End Developer"</span>,
+         <span class="text-pink-400">role</span>: <span class="text-yellow-300">"website creator"</span>,
         </div>
         <div class="pl-4">
-         <span class="text-pink-400">passion</span>: <span class="text-yellow-300">"Building Digital Bridges"</span>,
+         <span class="text-pink-400">passion</span>: <span class="text-yellow-300">"design and redesign websites"</span>,
         </div>
         <div class="pl-4">
          <span class="text-pink-400">skills</span>: [
         </div>
         <div class="pl-8 text-green-400">
-         "JavaScript", "React", "Node.js",
+         "JavaScript", "React", "Node.js","video editing"
         </div>
         <div class="pl-8 text-green-400">
-         "UI/UX", "Strategy"
+         "git", "UI/UX", "Strategy","github","domain",
         </div>
         <div class="pl-4">
          ],
@@ -428,8 +572,8 @@
        <div class="absolute left-0 right-0 h-px bg-cyan-400/30" style="animation: scan-line 4s linear infinite;"></div>
       </div><!-- About Content -->
       <div>
-       <p class="text-cyan-400 font-orbitron text-sm tracking-widest mb-2">WHO I AM</p>
-       <h2 class="font-orbitron text-3xl md:text-4xl font-bold mb-6"><span class="gradient-text" id="about-name-display">Omid Payanda</span></h2>
+       <p class="text-cyan-400 font-orbitron text-sm tracking-widest mb-2">Welcome to My Portfolio!</p>
+       <h2 class="font-orbitron text-3xl md:text-4xl font-bold mb-6"><span class="gradient-text" id="about-name-display">WEB DEVELOPMENT</span></h2>
        <p class="text-gray-300 text-lg mb-6 leading-relaxed" id="about-bio-display">Transforming business visions into digital reality. With years of experience in web development and digital strategy, I help businesses establish powerful online presences that drive real results.</p><!-- Skills -->
        <div class="space-y-4">
         <div>
@@ -464,6 +608,114 @@
       </div>
      </div>
     </div>
+
+
+    <section id="about" class="py-20 px-6 relative"><br>
+        <div class="section-divider max-w-4xl mx-auto"></div><br> <br>
+
+       <!-- پورتفولیو --> 
+
+<div class="max-w-7xl mx-auto relative z-10">
+<div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
+<div class="relative order-2 lg:order-1">
+<div class="relative mx-auto max-w-md">
+<div class="glass-strong rounded-3xl p-5 neon-glow animate-float" style="animation-duration:7s">
+
+<div class="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-[#12121a] to-[#0a0f1a] border-2 border-cyan-500/30">
+  <img 
+    src="omid.jpg" 
+    alt="Omid Payanda - Software Engineer" 
+    class="w-full h-full object-cover object-[center_%]"  <!-- ۷۵٪ از بالا → کمی پایین‌تر از وسط -->
+  >
+<div class="text-center p-10">
+<svg class="w-28 h-28 mx-auto mb-5 text-cyan-400/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+<p class="text-gray-500 text-base">عکس شما اینجا</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="order-1 lg:order-2 text-center lg:text-left">
+<p class="text-cyan-400 font-orbitron text-base tracking-widest mb-4 neon-text">WHO AM I</p>
+<h1 class="font-orbitron text-5xl md:text-6xl font-bold mb-5">Omid Payanda<br><span class="gradient-text"></span></h1>
+<p class="text-2xl text-gray-300 mb-10 neon-text-magenta">I Mm A Bridge To Connect Your Business To The World Wide Web.</p>
+<div class="text-gray-300 leading-relaxed text-lg space-y-5">
+<p>I am passionate about solving problems and taking on challenges that others often consider difficult or even impossible. Any challenge that pushes the mind to think deeply excites me.</p>
+<p>For nearly four years, I have been actively working with coding, web development, and understanding the logic behind software systems and websites. My journey into the digital world began over 20 years ago through graphic design, working with Photoshop, video editing, montage, and sound design.</p>
+<p>Today, this continuous path has shaped me into a web-focused software engineer and developer, specializing in designing, rebuilding, and developing a wide range of websites—including personal, corporate, commercial, and educational platforms.</p>
+<p>I approach problems with patience, precision, and logic, carefully analyzing every detail to arrive at the most effective solution. My interest in chess (around a 1000 rating) reflects this analytical mindset—it may not be professional-level, but it perfectly represents how I think and enjoy problem-solving.</p>
+<p>I am open to both team-based and independent projects, with a strong focus on creating unique, efficient, and meaningful web solutions that genuinely contribute to the growth, success, and progress of businesses.</p>
+</div>
+</div>
+</div>
+
+<div class="section-divider max-w-4xl mx-auto"></div>
+<!--added -->
+
+<div class="mt-16 grid lg:grid-cols-4 gap-0 overflow-hidden rounded-3xl border border-cyan-500/30 neon-glow">
+<div class="lg:col-span-3 glass-strong p-8 md:p-12">
+<h3 class="font-orbitron text-3xl md:text-4xl font-bold gradient-text mb-6 text-center lg:text-right">My Little digital Library</h3>
+<p class="text-gray-300 text-lg md:text-xl mb-10 text-center lg:text-right">“Literacy is not the result of reading much, but of reflecting deeply on what has been read.”</p>
+<div class="flex flex-wrap justify-center lg:justify-end gap-4 mb-10">
+<span class="px-5 py-2 bg-cyan-500/15 text-cyan-300 rounded-full text-base">Read</span>
+<span class="px-5 py-2 bg-purple-500/15 text-purple-300 rounded-full text-base">Think</span>
+<span class="px-5 py-2 bg-cyan-500/15 text-cyan-300 rounded-full text-base">Grow</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4 md:gap-6">
+<div class="book-card bg-gradient-to-b from-purple-900/20 rounded-xl p-3 text-center">
+<img src="https://m.media-amazon.com/images/I/61M1eEsuSML.jpg" alt="Rich Dad Poor Dad" class="w-full h-36 object-cover rounded-lg mb-2 shadow-xl">
+<p class="font-medium text-white text-sm">Rich Dad Poor Dad</p>
+<p class="text-xs text-gray-400">Robert Kiyosaki</p>
+</div>
+<div class="book-card bg-gradient-to-b from-green-900/20 rounded-xl p-3 text-center">
+<img src="https://m.media-amazon.com/images/I/610QDSRlLYL.jpg" alt="The Compound Effect" class="w-full h-36 object-cover rounded-lg mb-2 shadow-xl">
+<p class="font-medium text-white text-sm">The Compound Effect</p>
+<p class="text-xs text-gray-400">Darren Hardy</p>
+</div>
+<div class="book-card bg-gradient-to-b from-orange-900/20 rounded-xl p-3 text-center">
+<img src="https://m.media-amazon.com/images/I/71+vN6aVY+L.jpg" alt="Financial Intelligence" class="w-full h-36 object-cover rounded-lg mb-2 shadow-xl">
+<p class="font-medium text-white text-sm">Financial Intelligence</p>
+<p class="text-xs text-gray-400">Karen Berman</p>
+</div>
+<div class="book-card bg-gradient-to-b from-blue-900/20 rounded-xl p-3 text-center">
+<img src="https://m.media-amazon.com/images/I/61HBYr9C23L.jpg" alt="Your Best Year Ever" class="w-full h-36 object-cover rounded-lg mb-2 shadow-xl">
+<p class="font-medium text-white text-sm">Your Best Year Ever</p>
+<p class="text-xs text-gray-400">Darren Hardy</p>
+</div>
+<div class="book-card bg-gradient-to-b from-gray-900/20 rounded-xl p-3 text-center opacity-70 hover:opacity-100 transition">
+<div class="w-full h-36 bg-gray-800/50 rounded-lg mb-2 flex items-center justify-center">
+<svg class="w-10 h-10 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+</div>
+<p class="font-medium text-gray-400 text-sm">Next book</p>
+<p class="text-xs text-gray-600">need to be added...</p>
+</div>
+</div>
+</div>
+
+<!--شطرنج-->
+<div class="lg:col-span-1 chess-pattern relative flex items-center justify-center overflow-hidden">
+<div class="relative z-10 grid grid-cols-8 grid-rows-8 w-full h-full max-w-[360px] max-h-[360px] text-3xl md:text-4xl shadow-2xl">
+<div class="flex items-center justify-center text-white">♜</div><div class="flex items-center justify-center text-white">♞</div><div class="flex items-center justify-center text-white">♝</div><div class="flex items-center justify-center text-white">♛</div><div class="flex items-center justify-center text-white">♚</div><div class="flex items-center justify-center text-white">♝</div><div class="flex items-center justify-center text-white">♞</div><div class="flex items-center justify-center text-white">♜</div>
+<div class="flex items-center justify-center text-white">♟</div><div class="flex items-center justify-center text-white">♟</div><div class="flex items-center justify-center text-white">♟</div><div class="flex items-center justify-center text-white">♟</div><div class="flex items-center justify-center text-white">♟</div><div class="flex items-center justify-center text-white">♟</div><div class="flex items-center justify-center text-white">♟</div><div class="flex items-center justify-center text-white">♟</div>
+<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+<div class="flex items-center justify-center text-white">♙</div><div class="flex items-center justify-center text-white">♙</div><div class="flex items-center justify-center text-white">♙</div><div class="flex items-center justify-center text-white">♙</div><div class="flex items-center justify-center text-white">♙</div><div class="flex items-center justify-center text-white">♙</div><div class="flex items-center justify-center text-white">♙</div><div class="flex items-center justify-center text-white">♙</div>
+<div class="flex items-center justify-center text-white">♖</div><div class="flex items-center justify-center text-white">♘</div><div class="flex items-center justify-center text-white">♗</div><div class="flex items-center justify-center text-white">♕</div><div class="flex items-center justify-center text-white">♔</div><div class="flex items-center justify-center text-white">♗</div><div class="flex items-center justify-center text-white">♘</div><div class="flex items-center justify-center text-white">♖</div>
+</div>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<p class="text-cyan-200 font-orbitron text-xl md:text-2xl font-bold neon-text opacity-90 drop-shadow-lg">Love playing chess!</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+
+<!-- till here -->
+
    </section>
    <div class="section-divider max-w-4xl mx-auto"></div><!-- Value of Web Presence Section -->
    <section id="value" class="py-20 px-6">
@@ -537,151 +789,118 @@
      </div>
     </div>
    </section>
-   <div class="section-divider max-w-4xl mx-auto"></div><!-- Portfolio Section -->
-   <section id="portfolio" class="py-20 px-6">
-    <div class="max-w-7xl mx-auto">
-     <div class="text-center mb-16">
-      <p class="text-cyan-400 font-orbitron text-sm tracking-widest mb-2">MY WORK</p>
-      <h2 class="font-orbitron text-3xl md:text-4xl font-bold gradient-text mb-4">Portfolio Projects</h2>
-      <p class="text-gray-400 max-w-xl mx-auto">Explore interactive previews of recent coding projects with live JavaScript animations</p>
-     </div>
-     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Project 1 - Particle System -->
-      <div class="project-card glass-strong rounded-2xl overflow-hidden group">
-       <div class="h-48 relative bg-gradient-to-br from-cyan-900/50 to-purple-900/50 overflow-hidden">
-        <canvas id="particle-canvas" class="absolute inset-0 w-full h-full"></canvas>
-        <div class="absolute inset-0 flex items-center justify-center"><span class="text-6xl opacity-20 group-hover:opacity-40 transition-opacity">✨</span>
-        </div>
-       </div>
-       <div class="p-6">
-        <h3 class="font-orbitron text-lg text-cyan-400 mb-2">Particle Physics Engine</h3>
-        <p class="text-gray-400 text-sm mb-4">Interactive particle system with physics-based animations and collision detection.</p>
-        <div class="flex gap-2 flex-wrap"><span class="px-2 py-1 glass rounded text-xs text-cyan-400">Canvas API</span> <span class="px-2 py-1 glass rounded text-xs text-pink-400">Physics</span> <span class="px-2 py-1 glass rounded text-xs text-purple-400">Animation</span>
-        </div>
-       </div>
-      </div><!-- Project 2 - Data Visualization -->
-      <div class="project-card glass-strong rounded-2xl overflow-hidden group">
-       <div class="h-48 relative bg-gradient-to-br from-pink-900/50 to-orange-900/50 p-4">
-        <div class="h-full flex items-end gap-2" id="bar-chart">
-         <div class="flex-1 bg-gradient-to-t from-pink-500 to-orange-500 rounded-t transition-all duration-500" style="height: 60%;"></div>
-         <div class="flex-1 bg-gradient-to-t from-pink-500 to-orange-500 rounded-t transition-all duration-500" style="height: 80%;"></div>
-         <div class="flex-1 bg-gradient-to-t from-pink-500 to-orange-500 rounded-t transition-all duration-500" style="height: 45%;"></div>
-         <div class="flex-1 bg-gradient-to-t from-pink-500 to-orange-500 rounded-t transition-all duration-500" style="height: 90%;"></div>
-         <div class="flex-1 bg-gradient-to-t from-pink-500 to-orange-500 rounded-t transition-all duration-500" style="height: 70%;"></div>
-         <div class="flex-1 bg-gradient-to-t from-pink-500 to-orange-500 rounded-t transition-all duration-500" style="height: 55%;"></div>
-        </div>
-       </div>
-       <div class="p-6">
-        <h3 class="font-orbitron text-lg text-pink-400 mb-2">Data Visualization Suite</h3>
-        <p class="text-gray-400 text-sm mb-4">Dynamic charts and graphs with real-time data updates and smooth animations.</p>
-        <div class="flex gap-2 flex-wrap"><span class="px-2 py-1 glass rounded text-xs text-cyan-400">D3.js</span> <span class="px-2 py-1 glass rounded text-xs text-pink-400">Charts</span> <span class="px-2 py-1 glass rounded text-xs text-purple-400">Real-time</span>
-        </div>
-       </div>
-      </div><!-- Project 3 - 3D Animation -->
-      <div class="project-card glass-strong rounded-2xl overflow-hidden group">
-       <div class="h-48 relative bg-gradient-to-br from-purple-900/50 to-blue-900/50 flex items-center justify-center overflow-hidden">
-        <div id="cube-3d" class="w-20 h-20 relative preserve-3d" style="transform-style: preserve-3d;">
-         <div class="absolute inset-0 border-2 border-purple-400 bg-purple-400/10" style="transform: translateZ(40px);"></div>
-         <div class="absolute inset-0 border-2 border-purple-400 bg-purple-400/10" style="transform: translateZ(-40px);"></div>
-         <div class="absolute inset-0 border-2 border-cyan-400 bg-cyan-400/10" style="transform: rotateY(90deg) translateZ(40px);"></div>
-         <div class="absolute inset-0 border-2 border-cyan-400 bg-cyan-400/10" style="transform: rotateY(-90deg) translateZ(40px);"></div>
-         <div class="absolute inset-0 border-2 border-pink-400 bg-pink-400/10" style="transform: rotateX(90deg) translateZ(40px);"></div>
-         <div class="absolute inset-0 border-2 border-pink-400 bg-pink-400/10" style="transform: rotateX(-90deg) translateZ(40px);"></div>
-        </div>
-       </div>
-       <div class="p-6">
-        <h3 class="font-orbitron text-lg text-purple-400 mb-2">3D Interactive Gallery</h3>
-        <p class="text-gray-400 text-sm mb-4">Immersive 3D experiences with CSS transforms and WebGL integration.</p>
-        <div class="flex gap-2 flex-wrap"><span class="px-2 py-1 glass rounded text-xs text-cyan-400">Three.js</span> <span class="px-2 py-1 glass rounded text-xs text-pink-400">WebGL</span> <span class="px-2 py-1 glass rounded text-xs text-purple-400">3D CSS</span>
-        </div>
-       </div>
-      </div><!-- Project 4 - E-Commerce -->
-      <div class="project-card glass-strong rounded-2xl overflow-hidden group">
-       <div class="h-48 relative bg-gradient-to-br from-green-900/50 to-teal-900/50 flex items-center justify-center">
-        <div class="text-center">
-         <div class="text-6xl mb-2 group-hover:animate-bounce">
-          🛒
-         </div>
-         <div class="flex gap-1 justify-center"><span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span> <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse" style="animation-delay: 0.2s;"></span> <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse" style="animation-delay: 0.4s;"></span>
-         </div>
-        </div>
-       </div>
-       <div class="p-6">
-        <h3 class="font-orbitron text-lg text-green-400 mb-2">E-Commerce Platform</h3>
-        <p class="text-gray-400 text-sm mb-4">Full-stack shopping experience with cart management and payment integration.</p>
-        <div class="flex gap-2 flex-wrap"><span class="px-2 py-1 glass rounded text-xs text-cyan-400">React</span> <span class="px-2 py-1 glass rounded text-xs text-pink-400">Node.js</span> <span class="px-2 py-1 glass rounded text-xs text-purple-400">Stripe</span>
-        </div>
-       </div>
-      </div><!-- Project 5 - AI Dashboard -->
-      <div class="project-card glass-strong rounded-2xl overflow-hidden group">
-       <div class="h-48 relative bg-gradient-to-br from-yellow-900/50 to-red-900/50 p-4">
-        <div class="space-y-2">
-         <div class="glass rounded p-2 flex items-center gap-2">
-          <div class="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
-          <div class="flex-1 h-2 bg-gradient-to-r from-yellow-400 to-transparent rounded" id="ai-bar-1"></div>
-         </div>
-         <div class="glass rounded p-2 flex items-center gap-2">
-          <div class="w-2 h-2 bg-orange-400 rounded-full animate-pulse" style="animation-delay: 0.3s;"></div>
-          <div class="flex-1 h-2 bg-gradient-to-r from-orange-400 to-transparent rounded" id="ai-bar-2"></div>
-         </div>
-         <div class="glass rounded p-2 flex items-center gap-2">
-          <div class="w-2 h-2 bg-red-400 rounded-full animate-pulse" style="animation-delay: 0.6s;"></div>
-          <div class="flex-1 h-2 bg-gradient-to-r from-red-400 to-transparent rounded" id="ai-bar-3"></div>
-         </div>
-        </div>
-       </div>
-       <div class="p-6">
-        <h3 class="font-orbitron text-lg text-yellow-400 mb-2">AI Analytics Dashboard</h3>
-        <p class="text-gray-400 text-sm mb-4">Machine learning insights visualization with predictive analytics.</p>
-        <div class="flex gap-2 flex-wrap"><span class="px-2 py-1 glass rounded text-xs text-cyan-400">Python</span> <span class="px-2 py-1 glass rounded text-xs text-pink-400">TensorFlow</span> <span class="px-2 py-1 glass rounded text-xs text-purple-400">Dashboard</span>
-        </div>
-       </div>
-      </div><!-- Project 6 - Real-time Chat -->
-      <div class="project-card glass-strong rounded-2xl overflow-hidden group">
-       <div class="h-48 relative bg-gradient-to-br from-blue-900/50 to-indigo-900/50 p-4">
-        <div class="space-y-2" id="chat-demo">
-         <div class="glass rounded-lg p-2 max-w-[70%] text-sm"><span class="text-cyan-400">User:</span> Hello! 👋
-         </div>
-         <div class="glass rounded-lg p-2 max-w-[70%] ml-auto text-sm text-right"><span class="text-pink-400">Bot:</span> Hi there! 🤖
-         </div>
-         <div class="glass rounded-lg p-2 max-w-[70%] text-sm opacity-50"><span class="text-gray-400">typing...</span>
-         </div>
-        </div>
-       </div>
-       <div class="p-6">
-        <h3 class="font-orbitron text-lg text-blue-400 mb-2">Real-time Chat System</h3>
-        <p class="text-gray-400 text-sm mb-4">WebSocket-powered messaging with typing indicators and notifications.</p>
-        <div class="flex gap-2 flex-wrap"><span class="px-2 py-1 glass rounded text-xs text-cyan-400">Socket.io</span> <span class="px-2 py-1 glass rounded text-xs text-pink-400">Express</span> <span class="px-2 py-1 glass rounded text-xs text-purple-400">MongoDB</span>
-        </div>
-       </div>
-      </div>
-     </div>
-    </div>
-   </section><!-- Footer -->
-   <footer class="py-12 px-6 glass mt-12">
-    <div class="max-w-7xl mx-auto">
-     <div class="grid md:grid-cols-3 gap-8 items-center">
-      <div>
-       <div class="font-orbitron text-2xl font-bold neon-text mb-2">
-        AC
-       </div>
-       <p class="text-gray-400 text-sm">Bridging the gap between business vision and digital excellence.</p>
-      </div>
-      <div class="flex justify-center gap-4"><a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-cyan-400/20 transition-colors"> <span class="text-xl">💼</span> </a> <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-cyan-400/20 transition-colors"> <span class="text-xl">🐱</span> </a> <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-cyan-400/20 transition-colors"> <span class="text-xl">📧</span> </a> <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-cyan-400/20 transition-colors"> <span class="text-xl">🐦</span> </a>
-      </div>
-      <div class="text-right">
-       <p class="text-gray-400 text-sm">© 2024 Omid.Pa. All rights reserved.</p>
-       <p class="text-cyan-400 text-xs mt-1">Built with ❤️ and lots of ☕</p>
-      </div>
-     </div>
-    </div>
-   </footer>
-  </div>
+  
+  <!--added-->
+ 
+ 
+<section id="contact" class="py-20 px-6 relative">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+    <div class="section-divider max-w-4xl mx-auto"></div><br> <br><br>
+<p class="text-cyan-400 font-orbitron text-sm tracking-widest mb-2 neon-text">Get in Touch</p>
+<h2 class="font-orbitron text-4xl md:text-5xl font-bold gradient-text mb-4">Let's Work Together</h2>
+<p class="text-gray-300 max-w-2xl mx-auto text-lg">Ready to turn your ideas into reality? Reach out and let's get started!.</p>
+</div>
+<div class="grid md:grid-cols-2 gap-12">
+<div class="space-y-8">
+<div class="glass-strong rounded-2xl p-6 neon-border">
+<div class="flex items-center gap-5">
+<div class="w-14 h-14 rounded-xl bg-cyan-500/20 flex items-center justify-center text-2xl">✉️</div>
+<div>
+<p class="text-gray-400 text-sm mb-1">Email</p>
+<a href="mailto:omid.pa12@gmail.com" class="text-cyan-400 text-lg hover:text-cyan-300 transition-colors">omid.pa12@gmail.com</a>
+</div>
+</div>
+</div>
+<div class="glass-strong rounded-2xl p-6 neon-border">
+<div class="flex items-center gap-5">
+<div class="w-14 h-14 rounded-xl bg-pink-500/20 flex items-center justify-center text-2xl">📞</div>
+<div>
+<p class="text-gray-400 text-sm mb-1">Phone</p>
+<a href="tel:+12345678900" class="text-pink-400 text-lg hover:text-pink-300 transition-colors">+1 804-888-0327</a>
+</div>
+</div>
+</div>
+<div>
+<p class="text-cyan-400 font-orbitron text-sm tracking-wider mb-4 neon-text">SOCIAL MEDIA</p>
+<div class="flex flex-wrap gap-6 justify-center md:justify-start">
+  <!-- Instagram -->
+  <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer" 
+     class="w-14 h-14 glass rounded-full flex items-center justify-center text-2xl text-pink-400 hover:bg-pink-500/20 transition-all neon-border">
+    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+    </svg>
+  </a>
+
+  <!-- Facebook -->
+  <a href="https://facebook.com/yourusername" target="_blank" rel="noopener noreferrer" 
+     class="w-14 h-14 glass rounded-full flex items-center justify-center text-2xl text-blue-400 hover:bg-blue-500/20 transition-all neon-border">
+    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+    </svg>
+  </a>
+
+  <!-- LinkedIn -->
+  <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" 
+     class="w-14 h-14 glass rounded-full flex items-center justify-center text-2xl text-blue-500 hover:bg-blue-600/20 transition-all neon-border">
+    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+    </svg>
+  </a>
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" 
+     class="w-14 h-14 glass rounded-full flex items-center justify-center text-2xl text-green-400 hover:bg-green-500/20 transition-all neon-border">
+    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893-.001-3.181-1.24-6.171-3.491-8.418z"/>
+    </svg>
+  </a>
+
+  <!-- X (Twitter) -->
+  <a href="https://x.com/yourusername" target="_blank" rel="noopener noreferrer" 
+     class="w-14 h-14 glass rounded-full flex items-center justify-center text-2xl text-white hover:bg-gray-700/20 transition-all neon-border">
+    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+    </svg>
+  </a>
+
+  <!-- Indeed -->
+  <a href="https://www.indeed.com/?from=gnav-compui" target="_blank" rel="noopener noreferrer" 
+     class="w-14 h-14 glass rounded-full flex items-center justify-center text-2xl text-blue-300 hover:bg-blue-400/20 transition-all neon-border">
+    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+    </svg>
+  </a>
+</div>
+</div>
+</div>
+<div class="glass-strong rounded-2xl p-8 neon-border">
+<form id="contact-form" class="space-y-6">
+<div><label class="block text-gray-300 text-sm mb-2 font-medium">Your Name:</label><input type="text" class="w-full px-5 py-4 glass rounded-xl text-white border border-cyan-500/20 focus:border-cyan-400 focus:outline-none transition-all" placeholder="Name" required></div>
+<div><label class="block text-gray-300 text-sm mb-2 font-medium">Your Email:</label><input type="email" class="w-full px-5 py-4 glass rounded-xl text-white border border-cyan-500/20 focus:border-cyan-400 focus:outline-none transition-all" placeholder="Email" required></div>
+<div><label class="block text-gray-300 text-sm mb-2 font-medium">Your Message:</label><textarea rows="5" class="w-full px-5 py-4 glass rounded-xl text-white border border-cyan-500/20 focus:border-cyan-400 focus:outline-none transition-all resize-none" placeholder="Tell me about what ever you need..." required></textarea></div>
+<button type="submit" class="w-full py-4 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-xl font-semibold text-white tracking-wider hover:shadow-cyan-500/40 transition-all hover:scale-[1.02]">Send Message</button>
+<p id="form-status" class="text-center text-sm text-cyan-400 hidden mt-4"></p>
+</form>
+</div>
+</div>
+</div>
+</section>
+
+<footer class="py-12 px-6 glass mt-12">
+<div class="max-w-7xl mx-auto text-center">
+<p class="text-gray-400 text-sm">© 2025 Omid Payanda. All rights reserved. .</p>
+<p class="text-cyan-400 text-xs mt-2">Built with ❤️ and a lot of ☕</p>
+</div>
+</footer>
+
+</div>
   <script>
     // Default configuration
     const defaultConfig = {
       hero_title: "Business to Web Bridge",
       hero_subtitle: "Web Developer & Digital Strategist",
-      about_name: "Omid Payanda",
+      about_name: "Alex Chen",
       about_bio: "Transforming business visions into digital reality"
     };
     
@@ -1013,6 +1232,4 @@
     });
   </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ca5191f66e9181e',t:'MTc3MDQ5MDQ5MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
-
 </html>
-
