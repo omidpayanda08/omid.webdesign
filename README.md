@@ -1,1 +1,1 @@
-![image alt]([image_url](https://github.com/omidpayanda08/omid.webdesign/blob/d47a47088b4c09e74a6bb28ef51d83925e9ad4cb/omid.jpg))
+![image alt](https://github.com/omidpayanda08/omid.webdesign/blob/44369809e00658709e5785a33d21498994dc2d8f/omid.jpg)
