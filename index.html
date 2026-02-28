@@ -1269,18 +1269,20 @@
   });
 });
    //added
-   document.getElementById('contact-form').addEventListener('submit', async function(e) {
-  e.preventDefault(); // جلوی رفرش/ریدایرکت پیش‌فرض رو بگیر
+  document.getElementById('contact-form').addEventListener('submit', async function(e) {
+  e.preventDefault(); // جلوگیری از رفرش یا ریدایرکت پیش‌فرض
 
   const form = this;
   const status = document.getElementById('form-status');
-  const btn = document.getElementById('submit-btn');
+  const btn = document.getElementById('submit-btn') || form.querySelector('button[type="submit"]');
 
-  // آماده‌سازی
+  // آماده‌سازی UI
   status.classList.remove('hidden', 'text-green-400', 'text-red-400');
   status.textContent = 'در حال ارسال...';
-  btn.disabled = true;
-  btn.textContent = 'Sending...';
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = 'در حال ارسال...';
+  }
 
   try {
     const formData = new FormData(form);
@@ -1288,16 +1290,17 @@
     const response = await fetch(form.action, {
       method: 'POST',
       body: formData,
-      headers: { 'Accept': 'application/json' } // Forminit JSON برمی‌گردونه
+      headers: { 'Accept': 'application/json' }
     });
 
     if (response.ok) {
       const json = await response.json();
-      if (json.success || json.status === 'success') {  // بسته به پاسخ Forminit
-        status.textContent = '✓ پیام با موفقیت ارسال شد! ممنون از شما.';
+
+      // Forminit موفقیت رو معمولاً با success: true یا data.hashId یا بدون error برمی‌گردونه
+      if (json.success || json.data || !json.error) {
+        status.textContent = '✓ پیام با موفقیت ارسال شد! ممنون از پیامتون.';
         status.classList.add('text-green-400');
-        form.reset();
-      document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });//پاک کردن فرم
+        form.reset(); // پاک کردن فرم برای ارسال بعدی
       } else {
         throw new Error('خطا در پردازش');
       }
@@ -1305,16 +1308,20 @@
       throw new Error('مشکل ارتباط با سرور');
     }
   } catch (err) {
-    status.textContent = '✗ مشکلی پیش آمد. لطفاً دوباره امتحان کنید یا ایمیل بزنید.';
+    status.textContent = '✗ مشکلی پیش آمد. لطفاً دوباره امتحان کنید یا ایمیل مستقیم بزنید.';
     status.classList.add('text-red-400');
     console.error(err);
   }
 
   status.classList.remove('hidden');
-  btn.disabled = false;
-  btn.textContent = 'Send Message';
 
-  // بعد ۶ ثانیه پیام غیب بشه
+  // دکمه رو دوباره فعال کن
+  if (btn) {
+    btn.disabled = false;
+    btn.textContent = 'Send Message';
+  }
+
+  // پیام موفقیت/خطا بعد ۶ ثانیه محو بشه (اختیاری اما قشنگه)
   setTimeout(() => {
     status.classList.add('hidden');
   }, 6000);
@@ -1322,6 +1329,7 @@
   </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ca5191f66e9181e',t:'MTc3MDQ5MDQ5MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
 
 
 
