@@ -807,31 +807,54 @@
 </div>
 
 <div class="glass-strong rounded-2xl p-8 neon-border">
-<form id="contact-form" action="https://forminit.com/f/sw9yy5uzbrg" method="POST" class="space-y-6">
-  <!-- فقط یکی نگه دار – اگر می‌خوای بعد submit به #contact برگرده -->
-  <input type="hidden" name="_next" value="https://omid-payanda.com#contact">
+<!--126a26f6-ed11-495c-8207-d818f768b14aکد اکسس کی از سایت https://app.web3forms.com/ برای فعال سازی فرم ارسال-->
+<form id="contact-form"  class="space-y-6">
 
-  <div>
-    <label class="block text-gray-300 text-sm mb-2 font-medium">Your Name:</label>
-    <input type="text" name="name" class="w-full px-5 py-4 glass rounded-xl text-white border border-cyan-500/20 focus:border-cyan-400 focus:outline-none transition-all" placeholder="Name" required>
-  </div>
+<input type="hidden" name="access_key" value="126a26f6-ed11-495c-8207-d818f768b14a">
 
-  <div>
-    <label class="block text-gray-300 text-sm mb-2 font-medium">Your Email:</label>
-    <input type="email" name="email" class="w-full px-5 py-4 glass rounded-xl text-white border border-cyan-500/20 focus:border-cyan-400 focus:outline-none transition-all" placeholder="Email" required>
-  </div>
+<!--ضد اسپم و ربات-->
+<input type="checkbox" name="botcheck" class="hidden" style="display:none;">
 
-  <div>
-    <label class="block text-gray-300 text-sm mb-2 font-medium">Your Message:</label>
-    <textarea name="message" rows="5" class="w-full px-5 py-4 glass rounded-xl text-white border border-cyan-500/20 focus:border-cyan-400 focus:outline-none transition-all resize-none"
-     placeholder="Tell me how I can help you..." required></textarea>
-  </div>
 
-  <button type="submit" id="submit-btn" class="w-full py-4 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-xl font-semibold text-white tracking-wider hover:shadow-cyan-500/40 transition-all hover:scale-[1.02]">
-    Send Message
-  </button>
+<input type="hidden" name="subject" value="New Message From Portfolio">
 
-  <p id="form-status" class="text-center text-sm mt-4 hidden"></p>
+<input type="hidden" name="from_name" value="Omid Payanda Website">
+
+<div>
+<label class="block text-gray-300 text-sm mb-2 font-medium">Your Name:</label>
+
+<input type="text"
+name="name"
+required
+class="w-full px-5 py-4 glass rounded-xl text-white border border-cyan-500/20 focus:border-cyan-400 focus:outline-none transition-all"
+placeholder="Name">
+</div>
+
+<div>
+<label class="block text-gray-300 text-sm mb-2 font-medium">Your Email:</label>
+
+<input type="email"
+name="email"
+required
+class="w-full px-5 py-4 glass rounded-xl text-white border border-cyan-500/20 focus:border-cyan-400 focus:outline-none transition-all"
+placeholder="Email">
+</div>
+<div>
+<label class="block text-gray-300 text-sm mb-2 font-medium">Your Message:</label>
+<textarea
+name="message"
+rows="5"
+required
+class="w-full px-5 py-4 glass rounded-xl text-white border border-cyan-500/20 focus:border-cyan-400 focus:outline-none transition-all resize-none"
+placeholder="Tell me how I can help you...">
+</textarea>
+</div>
+<button
+type="submit"
+id="submit-btn"
+class="w-full py-4 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-xl font-semiboldtext-white tracking-wider hover:shadow-cyan-500/40 transition-all
+ hover:scale-[1.02]">Send Message</button>
+<p id="form-status" class="text-center text-sm mt-4 hidden"></p>
 </form>
 </div>
 </div>
@@ -850,6 +873,7 @@
  
   </body>
 </html>
+
 
 
 
