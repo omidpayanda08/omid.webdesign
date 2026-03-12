@@ -783,18 +783,41 @@
       setTimeout(() => toast.remove(), 3000);
     }
   //form js
-  document.addEventListener("DOMContentLoaded", function() {
+ document.addEventListener("DOMContentLoaded", function () {
 
 const form = document.getElementById("contact-form");
 const status = document.getElementById("form-status");
 const button = document.getElementById("submit-btn");
 
-form.addEventListener("submit", function() {
-  button.innerText = "Sending...";
-  button.disabled = true;
+form.addEventListener("submit", async function(e) {
 
-  status.classList.remove("hidden");
-  status.innerText = "Your message is being sent...";
+e.preventDefault();
+
+button.innerText = "Sending...";
+button.disabled = true;
+
+const data = new FormData(form);
+
+const response = await fetch("https://api.web3forms.com/submit", {
+method: "POST",
+body: data
+});
+
+const result = await response.json();
+
+status.classList.remove("hidden");
+
+if(result.success){
+status.innerText = "✅ Message sent successfully!";
+form.reset();
+button.innerText = "Send Message";
+button.disabled = false;
+}else{
+status.innerText = "❌ Something went wrong.";
+}
+
 });
 
 });
+
+
