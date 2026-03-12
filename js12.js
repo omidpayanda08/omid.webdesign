@@ -330,66 +330,43 @@
     document.querySelector(this.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
   });
 });
-   //added
-  document.getElementById('contact-form').addEventListener('submit', async function(e) {
-  e.preventDefault(); // جلوگیری از رفرش یا ریدایرکت پیش‌فرض
+  //form js
+document.addEventListener("DOMContentLoaded", function () {
 
-  const form = this;
-  const status = document.getElementById('form-status');
-  const btn = document.getElementById('submit-btn') || form.querySelector('button[type="submit"]');
+const form = document.getElementById("contact-form");
+const status = document.getElementById("form-status");
+const button = document.getElementById("submit-btn");
 
-  // آماده‌سازی UI
-  status.classList.remove('hidden', 'text-green-400', 'text-red-400');
-  status.textContent = 'در حال ارسال...';
-  if (btn) {
-    btn.disabled = true;
-    btn.textContent = 'در حال ارسال...';
-  }
+form.addEventListener("submit", async function(e) {
 
-  try {
-    const formData = new FormData(form);
+e.preventDefault();
 
-    const response = await fetch(form.action, {
-      method: 'POST',
-      body: formData,
-      headers: { 'Accept': 'application/json' }
-    });
+button.innerText = "Sending...";
+button.disabled = true;
 
-    if (response.ok) {
-      const json = await response.json();
+const data = new FormData(form);
 
-      // Forminit موفقیت رو معمولاً با success: true یا data.hashId یا بدون error برمی‌گردونه
-      if (json.success || json.data || !json.error) {
-        status.textContent = '✓ پیام با موفقیت ارسال شد! ممنون از پیامتون.';
-        status.classList.add('text-green-400');
-        form.reset(); // پاک کردن فرم برای ارسال بعدی
-      } else {
-        throw new Error('خطا در پردازش');
-      }
-    } else {
-      throw new Error('مشکل ارتباط با سرور');
-    }
-  } catch (err) {
-    status.textContent = '✗ مشکلی پیش آمد. لطفاً دوباره امتحان کنید یا ایمیل مستقیم بزنید.';
-    status.classList.add('text-red-400');
-    console.error(err);
-  }
-
-  status.classList.remove('hidden');
-
-  // دکمه رو دوباره فعال کن
-  if (btn) {
-    btn.disabled = false;
-    btn.textContent = 'Send Message';
-  }
-
-  // پیام موفقیت/خطا بعد ۶ ثانیه محو بشه (اختیاری اما قشنگه)
-  setTimeout(() => {
-    status.classList.add('hidden');
-  }, 6000);
+const response = await fetch("https://api.web3forms.com/submit", {
+method: "POST",
+body: data
 });
 
+const result = await response.json();
 
+status.classList.remove("hidden");
+
+if(result.success){
+status.innerText = "✅ Message sent successfully!";
+form.reset();
+button.innerText = "Send Message";
+button.disabled = false;
+}else{
+status.innerText = "❌ Something went wrong.";
+}
+
+});
+
+});
 //مینی آپ ها
 
 
@@ -782,42 +759,7 @@
       document.body.appendChild(toast);
       setTimeout(() => toast.remove(), 3000);
     }
-  //form js
- document.addEventListener("DOMContentLoaded", function () {
+ 
 
-const form = document.getElementById("contact-form");
-const status = document.getElementById("form-status");
-const button = document.getElementById("submit-btn");
-
-form.addEventListener("submit", async function(e) {
-
-e.preventDefault();
-
-button.innerText = "Sending...";
-button.disabled = true;
-
-const data = new FormData(form);
-
-const response = await fetch("https://api.web3forms.com/submit", {
-method: "POST",
-body: data
-});
-
-const result = await response.json();
-
-status.classList.remove("hidden");
-
-if(result.success){
-status.innerText = "✅ Message sent successfully!";
-form.reset();
-button.innerText = "Send Message";
-button.disabled = false;
-}else{
-status.innerText = "❌ Something went wrong.";
-}
-
-});
-
-});
 
 
