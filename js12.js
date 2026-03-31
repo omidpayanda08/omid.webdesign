@@ -762,30 +762,33 @@ status.innerText = "❌ Something went wrong.";
 
 
 // سرتفیکت
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-const closeBtn = document.getElementById('lightbox-close');
+document.addEventListener('DOMContentLoaded', () => {
 
-// وقتی روی عکس کلیک میشه
-document.querySelectorAll('.book-card img').forEach(img => {
-  img.addEventListener('click', () => {
-    lightboxImg.src = img.src; // عکس رو میذاره داخل لایت‌باکس
-    lightbox.classList.remove('hidden'); // نمایش
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const closeBtn = document.getElementById('lightbox-close');
+
+  // وقتی روی عکس کلیک میشه
+  document.querySelectorAll('.book-card img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightbox.classList.remove('hidden');
+    });
   });
-});
 
-// بستن با ضربدر
-closeBtn.addEventListener('click', () => {
-  lightbox.classList.add('hidden');
-});
-
-// بستن با کلیک روی پس‌زمینه
-lightbox.addEventListener('click', (e) => {
-  if (e.target === lightbox) {
+  // بستن با ضربدر
+  closeBtn.addEventListener('click', () => {
     lightbox.classList.add('hidden');
-  }
+  });
+
+  // بستن با کلیک روی پس‌زمینه
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      lightbox.classList.add('hidden');
+    }
+  });
+
 });
-  
 
 
 
