@@ -116,6 +116,79 @@ html, body {
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+
+
+    /* کارتها که بعدا اضافه کردم*/
+
+    .grid-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  height: 12rem;        /* ارتفاع ثابت کارت */
+  padding: 0.75rem;
+  border-radius: 1rem;
+  background: linear-gradient(to bottom, rgba(139,92,246,0.2), rgba(139,92,246,0.05));
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;     /* تصویر روی hover از کارت بیرون نزنه */
+}
+/* کارت اول تا سوم */
+.book-card:nth-child(-n+3) img {
+  height: 11rem; /* ارتفاع بلندتر مشابه کارت آخر */
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+/* کارت آخر بدون تغییر */
+.book-card:last-child img {
+  height: 11rem; /* همون ارتفاع اصلی خودش */
+}
+
+/* اول همه عکس‌ها رو بلند کن */
+.book-card img {
+  width: 100%;
+  height: 11rem;   /* همه بلندتر شدن */
+  object-fit: cover;
+  border-radius: 0.5rem;
+  transition: transform 0.3s ease;
+}
+/*  عکس چهارم کمی بالاتر */
+.book-card:nth-child(4) {
+  transform: translateY(-25px);
+}
+
+.book-card:nth-child(4):hover {
+  transform: translateY(-25px) scale(1.05);
+}
+
+.flex-left span {
+  margin-left: -0.5rem; /* همه اسپن‌ها کمی به چپ حرکت می‌کنند */
+}
+
+/* hover */
+.book-card:hover img {
+  transform: scale(1.1);
+}
+/* لایت‌باکس */
+#lightbox.hidden {
+  display: none;
+}
+#lightbox {
+  display: flex;
+}
+#lightbox img {
+  transition: transform 0.3s ease;
+}
     
     .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
     .animate-float { animation: float 3s ease-in-out infinite; }
